@@ -1,16 +1,51 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "uni-app"
-			}
-		}
-	],
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
-	}
+  "pages": [
+    { "path": "pages/index/index", "style": { "navigationBarTitleText": "时光" } },
+    { "path": "pages/calendar/calendar", "style": { "navigationBarTitleText": "岁月" } },
+    { "path": "pages/tools/tools", "style": { "navigationBarTitleText": "见微" } },
+    { "path": "pages/mine/mine", "style": { "navigationBarTitleText": "余生" } }
+  ],
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^u--(.*)": "uview-plus/components/u-$1/u-$1.vue",
+      "^up-(.*)": "uview-plus/components/u-$1/u-$1.vue",
+      "^u-([^-].*)": "uview-plus/components/u-$1/u-$1.vue"
+    }
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#5470c6",       // 柔和蓝，比 #4E73DF 更高级
+    "borderStyle": "white",           // 改为白色分隔线（更干净）
+    "backgroundColor": "#ffffff",
+    "fontSize": "12px",               // 小程序支持 fontSize
+    "iconWidth": "20px",              // H5/App 有效，控制图标大小
+    "height": "56px",                 // H5/App 有效，建议 50~60px
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "时光",
+        "iconPath": "static/tabbar/time-outline.png",
+        "selectedIconPath": "static/tabbar/mmd.png"
+      },
+      {
+        "pagePath": "pages/calendar/calendar",
+        "text": "岁月",
+        "iconPath": "static/tabbar/calendar-outline.png",
+        "selectedIconPath": "static/tabbar/mmd.png"
+      },
+      {
+        "pagePath": "pages/tools/tools",
+        "text": "见微",
+        "iconPath": "static/tabbar/tool-outline.png",
+        "selectedIconPath": "static/tabbar/mmd.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "余生",
+        "iconPath": "static/tabbar/user-outline.png",
+        "selectedIconPath": "static/tabbar/mmd.png"
+      }
+    ]
+  }
 }

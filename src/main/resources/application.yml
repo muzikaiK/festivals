@@ -1,1 +1,54 @@
-spring.application.name=festivals
+server:
+  port: 8080
+
+spring:
+  application:
+    name: festivals
+  datasource:
+    # 👇 这些是 Spring Boot 标准数据源配置（必须）
+    url: jdbc:mysql://127.0.0.1:13306/festivals_all?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: naigaidaren
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource  # 指定使用 Druid
+  druid:
+    initial-size: 5
+    min-idle: 5
+    max-active: 20
+    max-wait: 60000
+    time-between-eviction-runs-millis: 60000
+    min-evictable-idle-time-millis: 300000
+    validation-query: SELECT 1
+    test-while-idle: true
+    test-on-borrow: false
+    test-on-return: false
+    pool-prepared-statements: true
+    max-pool-prepared-statement-per-connection-size: 20
+    filters: stat,wall  # 可选：开启监控和防火墙
+    connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+
+  data:
+    redis:
+      password: naigaidaren
+      host: 127.0.0.1
+      port: 16379
+
+minio:
+  endpoint: http://127.0.0.1:9001
+  access-key: minio
+  secret-key: naigaidaren
+  bucket-name: festivals
+
+mybatis-plus:
+  type-aliases-package: com.likai.api.domain
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+api:
+  ipgeolocation:
+    key: 20f2283cc0e94890bf183084f96219e3
+  wechat:
+    appid: wx766c89bfeb45bbc4
+    secret: 365b1bc40ab16662e1536a08a70b405d
